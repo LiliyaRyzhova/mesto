@@ -1,0 +1,8 @@
+.card {
+	 background-color: white;
+	 max-width: 282px;
+	 max-height: 361px;
+	 border-radius: 10px;
+	 display: flex;
+	 flex-wrap: wrap;
+}

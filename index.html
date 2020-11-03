@@ -8,20 +8,66 @@
 </head>
 <body class="page">
   <header class="header">
-		  <img class="logo" src="./images/Logo.png" alt="Логотип проекта Место Россия">
+		  <img class="logo" src="./images/logo.svg" alt="Логотип проекта Место Россия">
 		</header>
+
 		<main class="content">
-    <div class="profile">
-			   <img class="avatar" src="./images/Jak_Kusto.jpg" alt="Фотография пользователя">
-				  <h2 class="user-name">Жак-Ив Кусто</h2>
-				  <p class="profession">Исследователь океана</p>
-				</div>
-				<div class="cards-area">
+    <section class="profile">
+						<img class="profile__avatar" src="./images/Jak_Kusto.jpg" alt="Фотография пользователя">
+						<div class="profile__info-block">
+								<div class="profile__edit">
+							   <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+										<button class="profile__edit-button"></button>
+								</div>
+								<p class="profile__profession">Исследователь океана</p>
+						</div>
+						<button class="profile__add-button"></button>
+				</section>
+				<section class="cards">
 					  <div class="card">
-									<img class="#" src="#" alt="#">
-									<h3 class="#"></h3>
-						 </div>
-				</div>
+									<img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
+									<h2 class="card__place-name">Карачаевск</h2>
+									<button class="card__like-button" type="button"><img class="card__heart" src="./images/heart.png" alt="Кнопка Лайк"></button>
+							</div>
+							<div class="card">
+								<img class="card__image" src="./images/Elbrus.png" alt="'Эльбрус на рассвете'">
+								<h2 class="card__place-name">Гора Эльбрус</h2>
+								<button class="card__like-button"><img class="card__heart" src="./images/heart.png" alt="Кнопка Лайк"></button>
+						</div>
+						<div class="card">
+							<img class="card__image" src="./images/dombay.png" alt="Заснеженная вершина горы на фоне осеннего леса">
+							<h2 class="card__place-name">Домбай</h2>
+							<button class="card__like-button" type="button"><img class="card__heart" src="./images/heart.png" alt="Кнопка Лайк"></button>
+					</div>
+					<div class="card">
+						<img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
+						<h2 class="card__place-name">Карачаевск</h2>
+						<button class="card__like-button"><img class="card__heart" src="./images/heart.png" alt="Кнопка Лайк"></button>
+				 </div>
+				  <div class="card">
+					   <img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
+					   <h3 class="card__place-name">Карачаевск</h3>
+					   <button class="card__like-button"><img class="card__heart" src="./images/heart.png" alt="Кнопка Лайк"></button>
+			    </div>
+			   <div class="card">
+				    <img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
+				    <h2 class="card__place-name">Карачаевск</h2>
+				    <button class="card__like-button"><img class="card__heart" src="./images/heart.png" alt="Кнопка Лайк"></button>
+		     </div>
+				</section>
+				<footer class="footer">
+					<p class="footer__autor">&copy; 2020 Mesto Russia</p>
+				</footer>
+				<form class="popup">
+					<div class="popup__container">
+							<h3 class="popup__heading">Редактировать профиль</h3>
+							<button class="popup__close-button" type="button"><img src="./images/Close Icon.svg" alt="Закрыть редактирование профиля"></button>
+							<input type="text" class="popup__name-field">
+							<input type="text" class="popup__profession-field">
+							<button class="popup__save-button" type="submit">Сохранить</button>
+					</div>
+			</form>
 		</main>
+		<script src="./scripts/index.js"></script>
 </body>
 </html>
