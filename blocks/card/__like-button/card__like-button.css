@@ -3,6 +3,7 @@
 		border: none;
 		margin: 31px 22.24px 30px auto;
 		outline: none;
+		cursor: pointer;
 }
 
 .card__like-button:hover {
