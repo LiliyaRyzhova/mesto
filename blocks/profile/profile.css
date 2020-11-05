@@ -2,14 +2,14 @@
 	 max-width: 882px;
 	 margin: 36.25px auto 47.25px;
 		display: flex;
-		align-items: flex-start;
+		align-items: flex-end;
 	}
 
 @media screen and (max-width: 900px){
-	.profile {
+	 .profile {
 				max-width: 100%;
 				flex-direction: column;
 				justify-content: center;
 				margin: 38.25px auto 0;
-	}
+	 }
 }

@@ -1,4 +1,15 @@
 .profile__edit {
+	 min-width: 336px;
 		display: flex;
-		margin: 24px auto 0;
-}
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	@media screen and (max-width: 900px){
+	  .profile__edit {
+					min-width: 189px;
+					justify-content: center;
+					padding: 22px 0 0 30px;
+
+			}
+	}

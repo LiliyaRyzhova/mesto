@@ -4,7 +4,7 @@
 }
 
 @media screen and (max-width: 900px) {
-	  .profile__info-block {
-					margin: auto;
-			}
+	 .profile__info-block {
+				margin: auto;
+		}
 }

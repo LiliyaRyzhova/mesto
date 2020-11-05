@@ -1,33 +1,33 @@
 let popup = document.querySelector('.popup');
+let form = document.querySelector ('.popup__form');
 let editButton = document.querySelector('.profile__edit-button');
 let popupCloseButton = document.querySelector('.popup__close-button');
 let nameProfile = document.querySelector('.profile__user-name');
 let professionProfile = document.querySelector('.profile__profession');
-let nameEditField = document.querySelector('.popup__name-field');
-let professionEditField = document.querySelector('.popup__profession-field');
+let nameEditField = document.querySelector('.popup__field_name');
+let professionEditField = document.querySelector('.popup__field_profession');
 let saveButton= document.querySelector('.popup__save-button');
 
-console.log(nameEditField)
 
 function showPopup () {
-popup.classList.add('popup_opened');
-nameEditField.value=nameProfile.textContent;
-professionEditField.value=professionProfile.textContent;
+  popup.classList.add('popup_opened');
+  nameEditField.value=nameProfile.textContent;
+  professionEditField.value=professionProfile.textContent;
 }
 
-editButton.addEventListener('click', showPopup)
 
 function closePopup () {
-	popup.classList.remove ('popup_opened');
+	 popup.classList.remove ('popup_opened');
 }
 
-popupCloseButton.addEventListener('click', closePopup)
 
 function submitPopup (event) {
-	event.preventDefault();
-	nameProfile.textContent=nameEditField.value;
-	professionProfile.textContent=professionEditField.value;
- popup.classList.remove ('popup_opened');
+	  event.preventDefault();
+	  nameProfile.textContent=nameEditField.value;
+  	professionProfile.textContent=professionEditField.value;
+   closePopup ();
 }
 
-popup.addEventListener('submit', submitPopup)
+editButton.addEventListener('click', showPopup);
+popupCloseButton.addEventListener('click', closePopup);
+form.addEventListener('submit', submitPopup);

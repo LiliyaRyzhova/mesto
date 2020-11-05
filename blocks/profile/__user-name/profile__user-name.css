@@ -3,15 +3,19 @@
 	 font-weight: 500;
 	 line-height: 1.15;
 	 color: white;
-	 padding:0;
 		margin: 0;
+		text-overflow: ellipsis;
+		max-width: 400px;
+		overflow: hidden;
+		white-space: nowrap;
+		padding-right: 18px;
 	}
 
 	@media screen and (max-width: 900px){
-		.profile__user-name {
-				text-align: center;
-				font-size: 27px;
-				margin:0;
-
+		 .profile__user-name {
+				 max-width: 225px;
+				 text-align: center;
+				 font-size: 27px;
+				 padding-right: 10px;
 		}
 	}

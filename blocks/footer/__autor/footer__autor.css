@@ -3,3 +3,10 @@
 		font-weight: 1.2;
 		font-weight: 400;
 }
+
+@media screen and (max-width: 320px) {
+	 .footer__autor {
+			 font-size: 14px;
+			 line-height: 1.1;
+	}
+}

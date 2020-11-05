@@ -1,15 +1,18 @@
-.popup__name-field {
+.popup__field {
 		width: 358px;
 		height: 27px;
-		margin: 54px 36px 0 36px;
 		border: none;
 		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 		outline: none;
+		margin: auto;
+}
+
+.popup__field:nth-child(2) {
+	 padding-top: 30px;
 }
 
 @media screen and (max-width: 500px) {
-	 .popup__name-field {
+	 .popup__field {
 				width: 238px;
-				margin: 75px 22px 0 22px;
 		}
 }

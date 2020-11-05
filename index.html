@@ -2,82 +2,89 @@
 <html lang="ru">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Место</title>
-	<link href="./pages/index.css" rel="stylesheet">
+	 <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <title>Место</title>
+	 <link href="./pages/index.css" rel="stylesheet">
 </head>
 
 <body class="page">
-	<header class="header">
-		<img class="logo" src="./images/logo.svg" alt="Логотип проекта Место Россия">
+	 <header class="header">
+		  <img class="logo" src="./images/logo.svg" alt="Логотип проекта Место Россия">
 	</header>
 	<main class="content">
-		<section class="profile">
-			<img class="profile__avatar" src="./images/Jak_Kusto.jpg" alt="Фотография пользователя">
-			<div class="profile__info-block">
-				<div class="profile__edit">
-					<h1 class="profile__user-name">Жак-Ив Кусто</h1>
-					<button class="profile__edit-button" type="button"></button>
-				</div>
-				<p class="profile__profession">Исследователь океана</p>
-			</div>
-			<button class="profile__add-button" type="button"></button>
-		</section>
-		<section class="cards">
-			<div class="card">
-				<img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
-				<h2 class="card__place-name">Карачаевск</h2>
-				<button class="card__like-button" type="button"><img class="card__heart" src="./images/heart.png"
-						alt="Кнопка Лайк"></button>
-			</div>
-			<div class="card">
-				<img class="card__image" src="./images/Elbrus.png" alt="'Эльбрус на рассвете'">
-				<h2 class="card__place-name">Гора Эльбрус</h2>
-				<button class="card__like-button"><img class="card__heart" src="./images/heart.png"
-						alt="Кнопка Лайк"></button>
-			</div>
-			<div class="card">
-				<img class="card__image" src="./images/dombay.png" alt="Заснеженная вершина горы на фоне осеннего леса">
-				<h2 class="card__place-name">Домбай</h2>
-				<button class="card__like-button" type="button"><img class="card__heart" src="./images/heart.png"
-						alt="Кнопка Лайк"></button>
-			</div>
-			<div class="card">
-				<img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
-				<h2 class="card__place-name">Карачаевск</h2>
-				<button class="card__like-button"><img class="card__heart" src="./images/heart.png"
-						alt="Кнопка Лайк"></button>
-			</div>
-			<div class="card">
-				<img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
-				<h3 class="card__place-name">Карачаевск</h3>
-				<button class="card__like-button"><img class="card__heart" src="./images/heart.png"
-						alt="Кнопка Лайк"></button>
-			</div>
-			<div class="card">
-				<img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
-				<h2 class="card__place-name">Карачаевск</h2>
-				<button class="card__like-button" type="button"><img class="card__heart" src="./images/heart.png"
-						alt="Кнопка Лайк"></button>
-			</div>
-		</section>
-		<footer class="footer">
-			<p class="footer__autor">&copy; 2020 Mesto Russia</p>
-		</footer>
-		<section class="popup">
-			<form class="popup__form">
-			<div class="popup__container">
-				<h3 class="popup__heading">Редактировать профиль</h3>
-				<button class="popup__close-button" type="button"></button>
-				<input type="text" class="popup__name-field" name="fullname">
-				<input type="text" class="popup__profession-field" name="profession">
-				<button class="popup__save-button" type="submit">Сохранить</button>
-			</div>
-		</form>	
-		</section>
+		 <section class="profile">
+			  <img class="profile__avatar" src="./images/jak_kusto.jpg" alt="Фотография пользователя">
+			  <div class="profile__info-block">
+				   <div class="profile__edit">
+					    <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+					    <button class="profile__edit-button" type="button" aria-label="редактировать"></button>
+			    </div>
+				   <p class="profile__profession">Исследователь океана</p>
+			  </div>
+			  <button class="profile__add-button" type="button" aria-label="добавить"></button>
+		 </section>
+		 <section class="cards">
+			  <article class="card">
+				   <img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
+				   <div class="card__info-block">
+				     <h2 class="card__place-name">Карачаевск</h2>
+				     <button class="card__like-button" type="button" aria-label="лайк"></button>
+			    </div>
+					</article>
+					<article class="card">
+						<img class="card__image" src="./images/dombay.png" alt="Заброшенный кирпичный храм в горах">
+						<div class="card__info-block">
+								<h2 class="card__place-name">Домбай</h2>
+								<button class="card__like-button" type="button" aria-label="лайк"></button>
+						</div>
+					</article>
+					<article class="card">
+						<img class="card__image" src="./images/elbrus.png" alt="Заброшенный кирпичный храм в горах">
+						<div class="card__info-block">
+								<h2 class="card__place-name">Эльбрус</h2>
+								<button class="card__like-button" type="button" aria-label="лайк"></button>
+						</div>
+					</article>
+					<article class="card">
+						<img class="card__image" src="./images/dombay.png" alt="Заброшенный кирпичный храм в горах">
+						<div class="card__info-block">
+								<h2 class="card__place-name">Домбай</h2>
+								<button class="card__like-button" type="button" aria-label="лайк"></button>
+						</div>
+					</article>
+					<article class="card">
+						<img class="card__image" src="./images/dombay.png" alt="Заброшенный кирпичный храм в горах">
+						<div class="card__info-block">
+								<h2 class="card__place-name">Домбай</h2>
+								<button class="card__like-button" type="button" aria-label="лайк"></button>
+						</div>
+					</article>
+					<article class="card">
+						<img class="card__image" src="./images/dombay.png" alt="Заброшенный кирпичный храм в горах">
+						<div class="card__info-block">
+								<h2 class="card__place-name">Домбай</h2>
+								<button class="card__like-button" type="button" aria-label="лайк"></button>
+						</div>
+				 </article>
+			</section>
+		 <footer class="footer">
+			  <p class="footer__autor">&copy; 2020 Mesto Russia</p>
+		 </footer>
+		 <div class="popup">
+			  <div class="popup__block">
+			    <div class="popup__container">
+									<h3 class="popup__heading">Редактировать профиль</h3>
+									<button class="popup__close-button" type="button"></button>
+									  <form class="popup__form" name="formEditProfile">
+				         <input type="text" class="popup__field popup__field_name" name="fullname">
+				     				<input type="text" class="popup__field popup__field_profession" name="profession">
+				         <button class="popup__save-button" type="submit">Сохранить</button>
+									  </form>
+							</div>
+				 </div> 
+		 </div>
 	</main>
 	<script src="./scripts/index.js"></script>
 </body>
-
 </html>
