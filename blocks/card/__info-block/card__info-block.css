@@ -1,8 +1,8 @@
 .card__info-block {
-		display: flex;
-		margin: auto;
-		width: 246px;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 26px;
+  display: flex;
+  margin: auto;
+  width: 246px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
 }
