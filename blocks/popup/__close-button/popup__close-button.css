@@ -4,11 +4,11 @@
   border: none;
   background-color: transparent;
   position: absolute;
-  top: -40px;
-  right: -40px;
+  top: -45px;
+  right: -45px;
   outline: none;
   cursor: pointer;
-  background-image: url(../../../images/Close\Icon.svg);
+  background-image: url(../../../images/Close\ Icon.svg);
   background-repeat: no-repeat;
   background-size: cover;
 }
