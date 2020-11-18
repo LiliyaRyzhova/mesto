@@ -28,3 +28,11 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__block/popup__block.css);
+@import url(../blocks/card/__remove-button/card__remove-button.css);
+@import url(../blocks/card/__like-button/_active/card__like-button_active.css);
+@import url(../blocks/popup/_open-image/popup__open-image.css);
+@import url(../blocks/popup/__container/_open-image/popup__container_open-image.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/card/__image/_popup/card__image_popup.css);
+@import url(../blocks/popup/__image-caption/popup__image-caption.css);
+@import url(../blocks/popup/__form/_open-image/popup__form_open-image.css);

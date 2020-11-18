@@ -5,3 +5,7 @@
   object-position: center;
   border-radius: 10px;
 }
+
+.card__image:hover {
+  cursor: pointer;
+}

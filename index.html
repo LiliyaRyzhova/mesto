@@ -25,64 +25,52 @@
       <button class="profile__add-button" type="button" aria-label="добавить"></button>
     </section>
     <section class="cards">
-      <article class="card">
-        <img class="card__image" src="./images/karacaevsk.png" alt="Заброшенный кирпичный храм в горах">
-        <div class="card__info-block">
-          <h2 class="card__place-name">Карачаевск</h2>
-          <button class="card__like-button" type="button" aria-label="лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/dombay.png" alt="Горы">
-        <div class="card__info-block">
-          <h2 class="card__place-name">Домбай</h2>
-          <button class="card__like-button" type="button" aria-label="лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/sohi.jpg" alt="Горы Сочи весной">
-        <div class="card__info-block">
-          <h2 class="card__place-name">Сочи</h2>
-          <button class="card__like-button" type="button" aria-label="лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/dombay.png" alt="Заброшенный кирпичный храм в горах">
-        <div class="card__info-block">
-          <h2 class="card__place-name">Домбай</h2>
-          <button class="card__like-button" type="button" aria-label="лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/dombay.png" alt="Заброшенный кирпичный храм в горах">
-        <div class="card__info-block">
-          <h2 class="card__place-name">Домбай</h2>
-          <button class="card__like-button" type="button" aria-label="лайк"></button>
-        </div>
-      </article>
-      <article class="card">
-        <img class="card__image" src="./images/dombay.png" alt="Заброшенный кирпичный храм в горах">
-        <div class="card__info-block">
-          <h2 class="card__place-name">Домбай</h2>
-          <button class="card__like-button" type="button" aria-label="лайк"></button>
-        </div>
-      </article>
     </section>
     <footer class="footer">
       <p class="footer__autor">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_edit-profile">
       <div class="popup__container">
         <h3 class="popup__heading">Редактировать профиль</h3>
-        <button class="popup__close-button" type="button"></button>
-        <form class="popup__form" name="form-edit-profile">
+        <button class="popup__close-button popup__close-button_edit-popup" type="button"></button>
+        <form class="popup__form popup__form_edit-profile" name="form-edit-profile">
           <input type="text" class="popup__field popup__field_name" name="fullname">
           <input type="text" class="popup__field popup__field_profession" name="profession">
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
+    <div class="popup popup_add-card">
+      <div class="popup__container">
+        <h3 class="popup__heading">Новое место</h3>
+        <button class="popup__close-button popup__close-button_add-popup" type="button"></button>
+        <form class="popup__form popup__form_add-card" name="form-add-card">
+          <input type="text" class="popup__field popup__field_place-name" name="place-name" placeholder="Название" style="color: #C4C4C4;">
+          <input type="text" class="popup__field popup__field_link" name="link" placeholder="Ссылка на картинку" style="color: #C4C4C4;">
+          <button class="popup__save-button" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_open-image">
+      <div class="popup__container popup__container_open-image">
+        <button class="popup__close-button popup__close-button_open-image" type="button"></button>
+        <form class="popup__form popup__form_open-image">
+        <img class="popup__image" src=" " alt="">
+        <p class="popup__image-caption"></p>
+        </form>
+      </div>
+    </div>
   </main>
+  <template id=card-template>
+    <article class="card">
+      <button class="card__remove-button" type="button" aria-label="удалить"></button>
+      <img class="card__image" src="#" alt="Фотография места">
+      <div class="card__info-block">
+        <h2 class="card__place-name"></h2>
+        <button class="card__like-button" type="button" aria-label="лайк"></button>
+      </div>
+    </article>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 
