@@ -3,7 +3,8 @@
   height: 282px;
   object-fit: cover;
   object-position: center;
-  border-radius: 10px;
+  border-top-right-radius: 10PX;
+  border-top-left-radius: 10PX;
 }
 
 .card__image:hover {
