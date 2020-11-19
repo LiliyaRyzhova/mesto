@@ -1,4 +1,3 @@
-const popup = document.querySelector('.popup');
 const editForm = document.querySelector('.popup__form_edit-profile');
 const addForm = document.querySelector('.popup__form_add-card')
 const showImagePopup = document.querySelector('.popup_open-image');
@@ -10,15 +9,12 @@ const nameProfile = document.querySelector('.profile__user-name');
 const professionProfile = document.querySelector('.profile__profession');
 const nameEditField = document.querySelector('.popup__field_name');
 const professionEditField = document.querySelector('.popup__field_profession');
-const saveButton = document.querySelector('.popup__save-button');
 const cardsContainer = document.querySelector('.cards');
 const addCardButton = document.querySelector('.profile__add-button');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
 const placeField = document.querySelector('.popup__field_place-name');
 const linkField = document.querySelector('.popup__field_link');
-const likeButton = document.querySelector('.card__like-button');
-const cardName = document.querySelector('.card__place-name');
 const popupShowImageCaption = document.querySelector('.popup__image-caption');
 const cardImage = document.querySelector('.popup__image');
 
