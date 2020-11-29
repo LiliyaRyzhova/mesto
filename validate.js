@@ -25,9 +25,9 @@ const toggleButtonState = (saveButton, isActive, config) => {
   if (isActive) {
     saveButton.classList.remove(config.buttonInvalidClass);
     saveButton.disabled = false;
-  } else {
+   } else {
     saveButton.classList.add(config.buttonInvalidClass);
-    saveButton.disabled = false;
+    saveButton.disabled = true;
   }
 };
 
@@ -35,7 +35,7 @@ const toggleButtonState = (saveButton, isActive, config) => {
 
 const setEventListeners = (form, config) => {
   const inputsList = Array.from(form.querySelectorAll(config.inputSelector));
-  const saveButton = document.querySelector(config.saveButtonSelector);
+  const saveButton = form.querySelector(config.saveButtonSelector);
   inputsList.forEach((input) => {
     input.addEventListener('input', function () {
       checkInputValidity(form, input, config);
