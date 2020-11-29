@@ -33,9 +33,11 @@
       <div class="popup__container">
         <h3 class="popup__heading">Редактировать профиль</h3>
         <button class="popup__close-button popup__close-button_edit-popup" type="button"></button>
-        <form class="popup__form popup__form_edit-profile" name="form-edit-profile">
-          <input type="text" class="popup__field popup__field_name" name="fullname">
-          <input type="text" class="popup__field popup__field_profession" name="profession">
+        <form class="popup__form popup__form-fields popup__form_edit-profile" name="form-edit-profile">
+          <input type="text" class="popup__field popup__field_name" name="fullname" minlength="2" maxlemgth="40" required id="popup__form_edit-profile">
+          <span class="popup__field-error popup__form_edit-profile-error" id="popup__form_edit-profile-error"></span>
+          <input type="text" class="popup__field popup__field_profession" name="profession" minlength="2" maxlemgth="200" required id="popup__field_profession">
+          <span class="popup__field-error popup__field_profession-error" id="popup__field_profession-error"></span>
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
@@ -44,9 +46,11 @@
       <div class="popup__container">
         <h3 class="popup__heading">Новое место</h3>
         <button class="popup__close-button popup__close-button_add-popup" type="button"></button>
-        <form class="popup__form popup__form_add-card" name="form-add-card">
-          <input type="text" class="popup__field popup__field_place-name" name="place-name" placeholder="Название" style="color: #C4C4C4;">
-          <input type="text" class="popup__field popup__field_link" name="link" placeholder="Ссылка на картинку" style="color: #C4C4C4;">
+        <form class="popup__form popup__form-fields popup__form_add-card" name="form-add-card">
+          <input type="text" class="popup__field popup__field_place-name" name="place-name" placeholder="Название" style="color: #C4C4C4;" minlength="2" maxlenght="30" required id="popup__field_place-name">
+          <span class="popup__field-error popup__field_place-name-error" id="popup__field_place-name-error"></span>
+          <input type="url" class="popup__field popup__field_link" name="link" placeholder="Ссылка на картинку" style="color: #C4C4C4;" required id="popup__field_link">
+          <span class="popup__field-error popup__field_link-error" id="popup__field_link-error"></span>
           <button class="popup__save-button" type="submit">Создать</button>
         </form>
       </div>
@@ -55,8 +59,8 @@
       <div class="popup__container popup__container_open-image">
         <button class="popup__close-button popup__close-button_open-image" type="button"></button>
         <form class="popup__form popup__form_open-image">
-        <img class="popup__image" src=" " alt=" фотография места">
-        <p class="popup__image-caption"></p>
+          <img class="popup__image" src=" " alt=" фотография места">
+          <p class="popup__image-caption"></p>
         </form>
       </div>
     </div>
@@ -71,6 +75,7 @@
       </div>
     </article>
   </template>
+  <script src="./validate.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 

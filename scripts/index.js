@@ -20,6 +20,9 @@ const cardImage = document.querySelector('.popup__image');
 
 
 
+
+
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -49,10 +52,39 @@ const initialCards = [
 
 function showPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  document.addEventListener('mousedown', closePopupOverlay);
+
+}
+
+//закрытие попап по нажатию ESC//
+
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    popupAddCard.classList.remove('popup_opened');
+    popupEditProfile.classList.remove('popup_opened');
+    showImagePopup.classList.remove('popup_opened');
+  }
+}
+
+//закрытие попап по щелчку вне попапа//
+
+function closePopupOverlay(evt) {
+  if (popupAddCard.contains(evt.target) && !addForm.contains(evt.target)) {
+    popupAddCard.classList.remove('popup_opened');
+  }
+  if (popupEditProfile.contains(evt.target) && !editForm.contains(evt.target)) {
+    popupEditProfile.classList.remove('popup_opened');
+  }
+  if (showImagePopup.contains(evt.target) && !cardImage.contains(evt.target)) {
+    showImagePopup.classList.remove('popup_opened');
+  }
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
+  document.removeEventListener('mousedown', closePopupOverlay);
 }
 
 // редактирование профиля//
@@ -109,6 +141,7 @@ function addCard(event) {
   };
   const cardElement = createCard(data);
   cardsContainer.prepend(cardElement);
+  addForm.reset();
   closePopup(popupAddCard);
 }
 
