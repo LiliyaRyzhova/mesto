@@ -61,9 +61,8 @@ function showPopup(popup) {
 
 function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
-    popupAddCard.classList.remove('popup_opened');
-    popupEditProfile.classList.remove('popup_opened');
-    showImagePopup.classList.remove('popup_opened');
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 
@@ -114,8 +113,8 @@ function createCard(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardCaption.textContent = data.name;
-  cardElement.querySelector('.card__image').src = data.link;
-  cardElement.querySelector('.card__place-name').textContent = data.name;
+  cardImage.src = data.link;
+  cardCaption.textContent = data.name;
   cardElement.querySelector('.card__like-button').addEventListener('click', function (event) {
     event.target.classList.toggle('card__like-button_active')});
   removeButton.addEventListener('click', function () {
