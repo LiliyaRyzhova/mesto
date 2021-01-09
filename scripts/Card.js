@@ -4,9 +4,10 @@ import {cardImage, showImagePopup, popupShowImageCaption, linkField, placeField}
 
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, openImagePopup) {
     this._link = data.link;
     this._name = data.name;
+    this._openImagePopup = openImagePopup;
     this._cardSelector = cardSelector;
   }
 
@@ -22,8 +23,8 @@ export default class Card {
 
   createCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('.card__image').src = this._link || linkField.value;
-    this._element.querySelector('.card__place-name').textContent = this._name || placeField.value;
+    this._element.querySelector('.card__image').src = this._link;
+    this._element.querySelector('.card__place-name').textContent = this._name;
     this._setEventListeners();
     return this._element;
   }
@@ -38,12 +39,12 @@ export default class Card {
     cardItem.remove();
   }
 
-  _showImage(src, alt) {
-    cardImage.src = src;
-    cardImage.alt = alt;
-    popupShowImageCaption.textContent = alt;
-    showPopup(showImagePopup);
-  }
+  // _showImage(src, alt) {
+  //   cardImage.src = src;
+  //   cardImage.alt = alt;
+  //   popupShowImageCaption.textContent = alt;
+  //   showPopup(showImagePopup);
+  // }
 
   _setEventListeners() {
     this._element.querySelector('.card__like-button').addEventListener('click', () => {
@@ -53,7 +54,7 @@ export default class Card {
       this._removeCard();
     })
     this._element.querySelector('.card__image').addEventListener('click', () => {
-      this._showImage(this._link, this._name);
+      this._openImagePopup(this._name, this._link);
     })
   }
 
