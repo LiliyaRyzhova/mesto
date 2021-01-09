@@ -126,12 +126,16 @@ import FormValidator from '../scripts/FormValidator.js';
 //   return cardElement;
 // }
 
-initialCards.forEach((item) => {
+function createCard(item) {
   const card = new Card(item, '.card-template', openImagePopup);
   const cardElement = card.createCard();
-
+  return cardElement;
+}
+initialCards.forEach((item) => {
+  const cardElement = createCard(item);
   cardsContainer.append(cardElement);
 });
+
 
 function openImagePopup(name, link) {
   cardImage.src = link;
@@ -179,15 +183,13 @@ addForm.addEventListener('submit', (item) => {
     link: linkField.value,
     name: placeField.value
   };
-  const card = new Card(data, '.card-template', openImagePopup);
-  const cardElement = card.createCard();
-
+  const cardElement = createCard(data);
   cardsContainer.prepend(cardElement);
   addForm.reset();
   closePopup(popupAddCard)
 } );
 
-const editFormValidator = new FormValidator(validationObj, editForm, openImagePopup);
+const editFormValidator = new FormValidator(validationObj, editForm);
 editFormValidator.enableValidation();
-const addFormValidator = new FormValidator(validationObj, addForm, openImagePopup);
+const addFormValidator = new FormValidator(validationObj, addForm);
 addFormValidator.enableValidation();

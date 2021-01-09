@@ -18,17 +18,12 @@ function closePopupEsc(evt) {
   }
 }
 
-//закрытие попап по щелчку вне попапа//
+//закрытие попап по щелчку вне попапа
+//Спасибо за подробные комментарии. Я прочитаю и сделаю более универсальный обработчик для закрытия по крестику и оверлею
 
 function closePopupOverlay(evt) {
-  if (popupAddCard.contains(evt.target) && !addForm.contains(evt.target)) {
-    popupAddCard.classList.remove('popup_opened');
-  }
-  if (popupEditProfile.contains(evt.target) && !editForm.contains(evt.target)) {
-    popupEditProfile.classList.remove('popup_opened');
-  }
-  if (showImagePopup.contains(evt.target) && !cardImage.contains(evt.target)) {
-    showImagePopup.classList.remove('popup_opened');
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target)
   }
 }
 

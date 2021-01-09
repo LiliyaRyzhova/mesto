@@ -23,7 +23,9 @@ export default class Card {
 
   createCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('.card__image').src = this._link;
+    this._cardImage = this._element.querySelector('.card__image')
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._element.querySelector('.card__place-name').textContent = this._name;
     this._setEventListeners();
     return this._element;
@@ -53,7 +55,7 @@ export default class Card {
     this._element.querySelector('.card__remove-button').addEventListener('click', () => {
       this._removeCard();
     })
-    this._element.querySelector('.card__image').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._openImagePopup(this._name, this._link);
     })
   }
