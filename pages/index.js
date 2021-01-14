@@ -1,7 +1,90 @@
-import Card from '../scripts/Card.js';
-import {showPopup, closePopup, fillProfilePopup, submitPopupEditProfile} from '../scripts/utils.js';
-import {editButton, addCardButton, popupCloseButtonEditPopup,popupShowImageCaption,  popupCloseButtonAddPopup, popupCloseButtonShowImagePopup, editForm, addForm, popupEditProfile, popupAddCard, showImagePopup, cardsContainer, initialCards, validationObj, cardImage, linkField, placeField } from '../scripts/data.js';
+import '../pages/index.css';
+import Card from '../components/Card.js';
+// import {submitPopupEditProfile} from '../scripts/utils.js';
+import {editButton, addCardButton,editForm, addForm, popupEditProfile,
+        popupAddCard, showImagePopup, cardsContainer, initialCards,
+        validationObj, linkField, placeField, nameProfile, professionProfile,
+        nameEditField, professionEditField } from '../scripts/constants.js';
 import FormValidator from '../scripts/FormValidator.js';
+import Section from '../components/Section.js';
+import Popup from '../components/popup.js';
+import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import UserInfo from '../components/UserInfo.js';
+
+//функция создания карточки из класса Card
+
+function createCard(item) {
+  const card = new Card(item, '.card-template', () => popupTypeOpenImage.open(item.link, item.name));
+  const cardElement = card.createCard(item);
+  return cardElement;
+}
+
+//создаем карточки из массива
+
+const cardsList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+// здесь хранится инструкция по работе с Card
+    const card = createCard(item);
+    cardsList.addItem(card);
+        },
+  },
+  '.cards'
+  );
+
+  cardsList.renderItems();
+
+// обработка попапов
+
+const popupTypeAddCard = new Popup(popupAddCard);
+const popupTypeEditProf = new Popup(popupEditProfile);
+const popupTypeOpenImage = new PopupWithImage(showImagePopup);
+const submitAddCardPopup = new PopupWithForm(popupAddCard, (link, name) => {
+      const card = createCard(link, name);
+      cardsList.addItemPrepend(card);
+});
+
+const userInfo = new UserInfo(nameProfile, professionProfile);
+const submitEditProfPopup = new PopupWithForm(popupEditProfile, (formData) => {
+   userInfo.setUserInfo(formData);
+})
+
+
+addCardButton.addEventListener('click',() => popupTypeAddCard.open());
+editButton.addEventListener('click', () => {
+  const userData = userInfo.getUserInfo();
+  nameEditField.value = userData.userNameInfo;
+  professionEditField.value = userData.userProfessionInfo;
+  popupTypeEditProf.open();
+})
+
+popupTypeAddCard.setEventListeners();
+popupTypeEditProf.setEventListeners();
+
+popupTypeOpenImage.setEventListeners();
+submitAddCardPopup.setEventListeners();
+submitEditProfPopup.setEventListeners();
+
+
+
+
+
+// валидация
+
+const editFormValidator = new FormValidator(validationObj, editForm);
+editFormValidator.enableValidation();
+const addFormValidator = new FormValidator(validationObj, addForm);
+addFormValidator.enableValidation();
+
+
+
+// function openImagePopup(name, link) {
+//   cardImage.src = link;
+//   cardImage.alt = name;
+//   popupShowImageCaption.textContent = name;
+//   showPopup(showImagePopup);
+// }
 
 // const editForm = document.querySelector('.popup__form_edit-profile');
 // const addForm = document.querySelector('.popup__form_add-card');
@@ -126,23 +209,15 @@ import FormValidator from '../scripts/FormValidator.js';
 //   return cardElement;
 // }
 
-function createCard(item) {
-  const card = new Card(item, '.card-template', openImagePopup);
-  const cardElement = card.createCard();
-  return cardElement;
-}
-initialCards.forEach((item) => {
-  const cardElement = createCard(item);
-  cardsContainer.append(cardElement);
-});
-
-
-function openImagePopup(name, link) {
-  cardImage.src = link;
-  cardImage.alt = name;
-  popupShowImageCaption.textContent = name;
-  showPopup(showImagePopup);
-}
+// function createCard(item) {
+//   const card = new Card(item, '.card-template', openImagePopup);
+//   const cardElement = card.createCard();
+//   return cardElement;
+// }
+// initialCards.forEach((item) => {
+//   const cardElement = createCard(item);
+//   cardsContainer.append(cardElement);
+// });
 
 // function addInitialCards (data) {
 //   const cardElement = createCard(data);
@@ -170,26 +245,10 @@ function openImagePopup(name, link) {
 //   showPopup(showImagePopup);
 // }
 
+// editButton.addEventListener('click', () => fillProfilePopup(popupEditProfile));
+// addCardButton.addEventListener('click', () => showPopup(popupAddCard));
+// popupCloseButtonEditPopup.addEventListener('click', () => closePopup(popupEditProfile));
+// popupCloseButtonAddPopup.addEventListener('click', () => closePopup(popupAddCard));
+// popupCloseButtonShowImagePopup.addEventListener('click', () => closePopup(showImagePopup));
 
 
-editButton.addEventListener('click', () => fillProfilePopup(popupEditProfile));
-addCardButton.addEventListener('click', () => showPopup(popupAddCard));
-popupCloseButtonEditPopup.addEventListener('click', () => closePopup(popupEditProfile));
-popupCloseButtonAddPopup.addEventListener('click', () => closePopup(popupAddCard));
-popupCloseButtonShowImagePopup.addEventListener('click', () => closePopup(showImagePopup));
-editForm.addEventListener('submit', submitPopupEditProfile);
-addForm.addEventListener('submit', (item) => {
-  const data = {
-    link: linkField.value,
-    name: placeField.value
-  };
-  const cardElement = createCard(data);
-  cardsContainer.prepend(cardElement);
-  addForm.reset();
-  closePopup(popupAddCard)
-} );
-
-const editFormValidator = new FormValidator(validationObj, editForm);
-editFormValidator.enableValidation();
-const addFormValidator = new FormValidator(validationObj, addForm);
-addFormValidator.enableValidation();

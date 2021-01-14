@@ -1,15 +1,14 @@
-import  {showPopup} from '../scripts/utils.js';
-import {cardImage, showImagePopup, popupShowImageCaption, linkField, placeField} from '../scripts/data.js';
-
-
 
 export default class Card {
-  constructor(data, cardSelector, openImagePopup) {
-    this._link = data.link;
-    this._name = data.name;
-    this._openImagePopup = openImagePopup;
+  constructor({link, name}, cardSelector, handleCardClick) {
+    this._link = link;
+    this._name = name;
+    this._handleCardClick = handleCardClick;
+    this._handleCardClickHandler = this._handleCardClickHandler.bind(this);
     this._cardSelector = cardSelector;
   }
+
+  //копируем разметку
 
   _getTemplate() {
     const cardElement = document
@@ -21,6 +20,8 @@ export default class Card {
     return cardElement;
   }
 
+  //создаем карточку
+
   createCard() {
     this._element = this._getTemplate();
     this._cardImage = this._element.querySelector('.card__image')
@@ -31,22 +32,26 @@ export default class Card {
     return this._element;
   }
 
+//функциональность добавить/убрать лайк
 
     _handleLike() {
     this._element.querySelector('.card__like-button').classList.toggle('card__like-button_active');
   }
+
+  // удаление карточки
 
   _removeCard() {
     const cardItem = this._element.querySelector('.card__remove-button').closest('.card');
     cardItem.remove();
   }
 
-  // _showImage(src, alt) {
-  //   cardImage.src = src;
-  //   cardImage.alt = alt;
-  //   popupShowImageCaption.textContent = alt;
-  //   showPopup(showImagePopup);
-  // }
+//обработка открытия изображения
+
+  _handleCardClickHandler() {
+    this._handleCardClick(this._link, this._name);
+  }
+
+ //установка слушателей на кнопки и элементы
 
   _setEventListeners() {
     this._element.querySelector('.card__like-button').addEventListener('click', () => {
@@ -56,7 +61,7 @@ export default class Card {
       this._removeCard();
     })
     this._cardImage.addEventListener('click', () => {
-      this._openImagePopup(this._name, this._link);
+      this._handleCardClickHandler(this._link,  this._name);
     })
   }
 
