@@ -1,16 +1,16 @@
-import '../pages/index.css';
-import Card from '../components/Card.js';
+import '../src/pages/index.css';
+import Card from './components/Card.js';
 // import {submitPopupEditProfile} from '../scripts/utils.js';
 import {editButton, addCardButton,editForm, addForm, popupEditProfile,
         popupAddCard, showImagePopup, cardsContainer, initialCards,
         validationObj, linkField, placeField, nameProfile, professionProfile,
-        nameEditField, professionEditField } from '../scripts/constants.js';
-import FormValidator from '../scripts/FormValidator.js';
-import Section from '../components/Section.js';
-import Popup from '../components/popup.js';
-import PopupWithImage from '../components/PopupWithImage.js'
-import PopupWithForm from '../components/PopupWithForm.js'
-import UserInfo from '../components/UserInfo.js';
+        nameEditField, professionEditField } from './scripts/constants.js';
+import FormValidator from './components/FormValidator.js';
+import Section from './components/Section.js';
+import Popup from './components/popup.js';
+import PopupWithImage from './components/PopupWithImage.js'
+import PopupWithForm from './components/PopupWithForm.js'
+import UserInfo from './components/UserInfo.js';
 
 //функция создания карточки из класса Card
 
