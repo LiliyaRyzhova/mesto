@@ -17,6 +17,9 @@ const placeField = document.querySelector('.popup__field_place-name');
 const linkField = document.querySelector('.popup__field_link');
 const popupShowImageCaption = document.querySelector('.popup__image-caption');
 const cardImage = document.querySelector('.popup__image');
+const escKey = 'Escape';
+const formSaveButton = document.querySelector('.popup__save-button');
+const formSaveButtonInactive = document.querySelector('.popup__save-button_inactive')
 
 const validationObj = {
   formSelector: '.popup__form-fields',
@@ -55,4 +58,6 @@ const initialCards = [
 
 export {editForm, addForm, editButton, popupCloseButtonEditPopup, popupCloseButtonAddPopup,
         popupCloseButtonShowImagePopup, nameProfile, professionProfile, nameEditField, professionEditField,
-        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage, showImagePopup, popupShowImageCaption, initialCards, validationObj};
+        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage, showImagePopup, popupShowImageCaption, initialCards, validationObj, escKey, formSaveButton, formSaveButtonInactive};
+
+

@@ -41,8 +41,9 @@ export default class Card {
   // удаление карточки
 
   _removeCard() {
-    const cardItem = this._element.querySelector('.card__remove-button').closest('.card');
-    cardItem.remove();
+    // const cardItem = this._element.querySelector('.card__remove-button').closest('.card');
+    // cardItem.remove();
+    this._element.remove();
   }
 
 //обработка открытия изображения
