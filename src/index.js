@@ -5,7 +5,8 @@ import {editButton, addCardButton,editForm, addForm, popupEditProfile,
         popupAddCard, showImagePopup, cardsContainer, initialCards,
         validationObj, linkField, placeField, nameProfile, professionProfile,
         nameEditField, professionEditField, formSaveButton, popupConfirmRemoval,
-        popupEditAvatar, editAvatarButton, popupChangeAvatarButton, avatarEditField, avatarProfile,formSaveButtonAddCard} from './constants.js';
+        popupEditAvatar, editAvatarButton, popupChangeAvatarButton, avatarEditField,
+         avatarProfile,formSaveButtonAddCard, changeAvatarForm} from './constants.js';
 import FormValidator from './components/FormValidator.js';
 import Section from './components/Section.js';
 // import Popup from './components/Popup.js';
@@ -234,5 +235,7 @@ const editFormValidator = new FormValidator(validationObj, editForm);
 editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(validationObj, addForm);
 addFormValidator.enableValidation();
+const editAvatarFormValidator = new FormValidator(validationObj, changeAvatarForm);
+editAvatarFormValidator.enableValidation();
 
 

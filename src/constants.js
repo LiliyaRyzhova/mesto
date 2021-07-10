@@ -1,5 +1,6 @@
 const editForm = document.querySelector('.popup__form_edit-profile');
 const addForm = document.querySelector('.popup__form_add-card');
+const changeAvatarForm = document.querySelector(".popup__form_change-avatar")
 const showImagePopup = document.querySelector('.popup_open-image');
 const editButton = document.querySelector('.profile__edit-button');
 const popupCloseButtonEditPopup = document.querySelector('.popup__close-button_edit-popup');
@@ -66,6 +67,9 @@ const initialCards = [
 
 export {editForm, addForm, editButton, popupCloseButtonEditPopup, popupCloseButtonAddPopup,
         popupCloseButtonShowImagePopup, nameProfile, professionProfile, nameEditField, professionEditField,
-        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage, showImagePopup, popupShowImageCaption, validationObj, escKey, formSaveButton, formSaveButtonInactive, initialCards, popupConfirmRemoval, popupEditAvatar, editAvatarButton, avatarEditField, popupChangeAvatarButton,avatarProfile, cardRemoveButton,formSaveButtonAddCard};
+        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage,
+        showImagePopup, popupShowImageCaption, validationObj, escKey, formSaveButton, formSaveButtonInactive,
+        initialCards, popupConfirmRemoval, popupEditAvatar, editAvatarButton, avatarEditField, popupChangeAvatarButton
+        ,avatarProfile, cardRemoveButton,formSaveButtonAddCard,changeAvatarForm};
 
 
