@@ -61,9 +61,7 @@ export default class Api{
        return res.json();
       }
       return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    }
-    )
-
+    })
   }
 
   // создание новой карточки
@@ -109,8 +107,6 @@ export default class Api{
 
 
   removeLike(cardId,userId) {
-    // let method = 'PUT';
-    // if(isDeleted) method ='DELETE';
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: 'DELETE',
       headers: {
@@ -144,8 +140,7 @@ export default class Api{
          return res.json();
         }
         return Promise.reject(`Что-то пошло не так: ${res.status}`);
-      }
-      )
+      })
   }
 
   //запрос на обновление аватара
