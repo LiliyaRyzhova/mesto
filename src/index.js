@@ -4,7 +4,8 @@ import Card from './components/Card.js';
 import {editButton, addCardButton,editForm, addForm, popupEditProfile,
         popupAddCard, showImagePopup, cardsContainer, initialCards,
         validationObj, linkField, placeField, nameProfile, professionProfile,
-        nameEditField, professionEditField, formSaveButton, popupConfirmRemoval, popupEditAvatar, editAvatarButton, popupChangeAvatarButton, avatarEditField, avatarProfile} from './constants.js';
+        nameEditField, professionEditField, formSaveButton, popupConfirmRemoval,
+        popupEditAvatar, editAvatarButton, popupChangeAvatarButton, avatarEditField, avatarProfile,formSaveButtonAddCard} from './constants.js';
 import FormValidator from './components/FormValidator.js';
 import Section from './components/Section.js';
 // import Popup from './components/Popup.js';
@@ -148,16 +149,18 @@ const cardsList = new Section({
 // обработка попапов
 
 const popupTypeOpenImage = new PopupWithImage(showImagePopup);
-const submitAddCardPopup = new PopupWithForm(popupAddCard, ({link, name}) => {
+const submitAddCardPopup = new PopupWithForm(popupAddCard, () => {
       api.addNewCard()
       .then((res) => {
       const card = createCard(res);
       cardsList.addItemPrepend(card);
+      formSaveButtonAddCard.textContent = 'Создать'
       })
       .catch((err) => {
         console.log(err)
+        formSaveButtonAddCard.textContent = 'Создать'
       })
-      formSaveButton.textContent = 'Сохранение...'
+      formSaveButtonAddCard.textContent = 'Сохранение...'
 });
 const popupTypeConfirm = new PopupConfirm(popupConfirmRemoval);
 

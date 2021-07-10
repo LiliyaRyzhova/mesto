@@ -22,11 +22,12 @@ const cardImage = document.querySelector('.popup__image');
 const escKey = 'Escape';
 const formSaveButton = document.querySelector('.popup__save-button');
 const formSaveButtonInactive = document.querySelector('.popup__save-button_inactive')
-const cardRemoveButton = document.querySelector('.card__remove-button')
-const popupConfirmRemoval = document.querySelector('.popup_confirm-removal')
-const editAvatarButton = document.querySelector('.profile__edit-sign')
-const avatarEditField = document.querySelector('.popup__field_avatar_link')
-const avatarProfile = document.querySelector('.profile__avatar')
+const formSaveButtonAddCard =document.querySelector('.popup__save-button_add-card');
+const cardRemoveButton = document.querySelector('.card__remove-button');
+const popupConfirmRemoval = document.querySelector('.popup_confirm-removal');
+const editAvatarButton = document.querySelector('.profile__edit-sign');
+const avatarEditField = document.querySelector('.popup__field_avatar_link');
+const avatarProfile = document.querySelector('.profile__avatar');
 
 const validationObj = {
   formSelector: '.popup__form-fields',
@@ -65,6 +66,6 @@ const initialCards = [
 
 export {editForm, addForm, editButton, popupCloseButtonEditPopup, popupCloseButtonAddPopup,
         popupCloseButtonShowImagePopup, nameProfile, professionProfile, nameEditField, professionEditField,
-        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage, showImagePopup, popupShowImageCaption, validationObj, escKey, formSaveButton, formSaveButtonInactive, initialCards, popupConfirmRemoval, popupEditAvatar, editAvatarButton, avatarEditField, popupChangeAvatarButton,avatarProfile, cardRemoveButton};
+        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage, showImagePopup, popupShowImageCaption, validationObj, escKey, formSaveButton, formSaveButtonInactive, initialCards, popupConfirmRemoval, popupEditAvatar, editAvatarButton, avatarEditField, popupChangeAvatarButton,avatarProfile, cardRemoveButton,formSaveButtonAddCard};
 
 
