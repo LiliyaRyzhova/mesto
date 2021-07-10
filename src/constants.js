@@ -5,6 +5,7 @@ const editButton = document.querySelector('.profile__edit-button');
 const popupCloseButtonEditPopup = document.querySelector('.popup__close-button_edit-popup');
 const popupCloseButtonAddPopup = document.querySelector('.popup__close-button_add-popup');
 const popupCloseButtonShowImagePopup = document.querySelector('.popup__close-button_open-image');
+const popupChangeAvatarButton = document.querySelector('.popup__close-button_change-avatar');
 const nameProfile = document.querySelector('.profile__user-name');
 const professionProfile = document.querySelector('.profile__profession');
 const nameEditField = document.querySelector('.popup__field_name');
@@ -13,6 +14,7 @@ const cardsContainer = document.querySelector('.cards');
 const addCardButton = document.querySelector('.profile__add-button');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
+const popupEditAvatar = document.querySelector('.popup_change-avatar')
 const placeField = document.querySelector('.popup__field_place-name');
 const linkField = document.querySelector('.popup__field_link');
 const popupShowImageCaption = document.querySelector('.popup__image-caption');
@@ -20,6 +22,11 @@ const cardImage = document.querySelector('.popup__image');
 const escKey = 'Escape';
 const formSaveButton = document.querySelector('.popup__save-button');
 const formSaveButtonInactive = document.querySelector('.popup__save-button_inactive')
+const cardRemoveButton = document.querySelector('.card__remove-button')
+const popupConfirmRemoval = document.querySelector('.popup_confirm-removal')
+const editAvatarButton = document.querySelector('.profile__edit-sign')
+const avatarEditField = document.querySelector('.popup__field_avatar_link')
+const avatarProfile = document.querySelector('.profile__avatar')
 
 const validationObj = {
   formSelector: '.popup__form-fields',
@@ -58,6 +65,6 @@ const initialCards = [
 
 export {editForm, addForm, editButton, popupCloseButtonEditPopup, popupCloseButtonAddPopup,
         popupCloseButtonShowImagePopup, nameProfile, professionProfile, nameEditField, professionEditField,
-        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage, showImagePopup, popupShowImageCaption, initialCards, validationObj, escKey, formSaveButton, formSaveButtonInactive};
+        cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage, showImagePopup, popupShowImageCaption, validationObj, escKey, formSaveButton, formSaveButtonInactive, initialCards, popupConfirmRemoval, popupEditAvatar, editAvatarButton, avatarEditField, popupChangeAvatarButton,avatarProfile, cardRemoveButton};
 
 

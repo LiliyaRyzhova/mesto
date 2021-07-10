@@ -10,11 +10,19 @@
 
 <body class="page">
   <header class="header">
-    <img class="logo" src="<%=require('./images/logo.svg')%>" alt="Логотип проекта Место Россия">
+    <img class="logo" src="<%=require('./images/logo.svg')%>" alt="Логотип проекта Место Россия" >
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Фотография пользователя">
+      <!-- <span class="profile__overlay"> -->
+        <span class="profile__edit-sign"></span>
+        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Фотография пользователя" id="avatar">
+        <!-- <span class="profile__edit-sign"></span> -->
+      <!-- </span> -->
+      <!-- <span class="profile__edit-sign"></span> -->
+      <!-- <img class="profile__edit-sign" src="<%=require('./images/edit.svg')%>" alt="Значок редактирования"> -->
+        <!-- <button class="profile__overlay-img" type="button" ></button> -->
+      <!-- <div class="profile__overlay"></div> -->
       <div class="profile__info-block">
         <div class="profile__edit">
           <h1 class="profile__user-name">Жак-Ив Кусто</h1>
@@ -36,7 +44,7 @@
         <form class="popup__form popup__form-fields popup__form_edit-profile" name="form-edit-profile">
           <input type="text" class="popup__field popup__field_name" name="name" minlength="2" maxlemgth="40" required id="popup__field_name">
           <span class="popup__field-error" id="popup__field_name-error"></span>
-          <input type="text" class="popup__field popup__field_profession" name="profession" minlength="2" maxlemgth="200" required id="popup__field_profession">
+          <input type="text" class="popup__field popup__field_profession" name="about" minlength="2" maxlemgth="200" required id="popup__field_profession">
           <span class="popup__field-error" id="popup__field_profession-error"></span>
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
@@ -64,6 +72,28 @@
         </form>
       </div>
     </div>
+    <div class="popup popup_confirm-removal">
+      <div class="popup__container popup__container_confirm-removal">
+        <h3 class="popup__heading">Вы уверены?</h3>
+        <button class="popup__close-button popup__close-button_confirm-removal" type="button"></button>
+        <form class="popup__form popup__form_confirm-removal">
+          <button class="popup__save-button popup__save-button_confirm-removal" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_change-avatar">
+      <div class="popup__container popup__container_change-avatar">
+        <h3 class="popup__heading">Обновить аватар</h3>
+        <button class="popup__close-button popup__close-button_change-avatar" type="button"></button>
+        <form class="popup__form popup__form_change-avatar">
+        <input type="url" class="popup__field popup__field_avatar_link" name="avatar" placeholder="Ссылка на новый аватар" style="color: #C4C4C4;" required id="popup__field_avatar_link">
+          <span class="popup__field-error" id="popup__field_link-error"></span>
+
+        <!-- <form class="popup__form popup__form_change-avatar"> -->
+          <button class="popup__save-button popup__save-button_change-avatar" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
   </main>
   <template id=card-template class="card-template">
     <article class="card">
@@ -71,7 +101,10 @@
       <img class="card__image" src="#" alt="Фотография места">
       <div class="card__info-block">
         <h2 class="card__place-name"></h2>
-        <button class="card__like-button" type="button" aria-label="лайк"></button>
+        <div class="card__like-block">
+          <button class="card__like-button" type="button" aria-label="лайк"></button>
+          <p class="card__like-counter">0</p>
+        </div>
       </div>
     </article>
   </template>

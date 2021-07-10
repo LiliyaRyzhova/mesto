@@ -3,6 +3,9 @@
   height: 120px;
   border-radius: 50%;
   margin-right: 26.25px;
+  object-fit: cover;
+
+
 }
 
 @media screen and (max-width: 900px) {
@@ -10,3 +13,6 @@
       margin: auto;
   }
 }
+
+
+

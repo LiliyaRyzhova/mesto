@@ -4,7 +4,6 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleFormSubmit){  //принимает селектор попапа и кол-бэк формы - что должно происходить после нажатия кнопки submit
   super(popupSelector);
   this._handleFormSubmit = handleFormSubmit;
-
   this._form = this._popupSelector.querySelector('.popup__form')
 
 }

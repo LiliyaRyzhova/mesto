@@ -5,9 +5,10 @@
 // - Содержит публичный метод `setUserInfo,` который принимает новые данные пользователя и добавляет их на страницу.
 
 export default class UserInfo {
-  constructor(name, profession) {
+  constructor(name, profession, avatar) {
     this._name = name;
     this._profession = profession;
+    this._avatar = avatar;
   }
 
   getUserInfo() {
@@ -18,10 +19,21 @@ export default class UserInfo {
 
   }
 
-  setUserInfo({name, profession}) {
+  setUserInfo({name, about}) {
     this._name.textContent = name;
-    this._profession.textContent = profession;
+    this._profession.textContent = about;
 
+  }
+
+  getUserPhoto() {
+    return {
+      userPhoto: this._avatar.src
+
+    }
+  }
+
+  setUserPhoto({avatar}) {
+    this._avatar.src = avatar
   }
 
 }

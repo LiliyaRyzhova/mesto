@@ -37,4 +37,12 @@
 @import url(../blocks/popup/__form/_open-image/popup__form_open-image.css);
 @import url(../blocks/popup/__field/_invalid/popup__field_invalid.css);
 @import url(../blocks/popup/__field-error/popup__field-error.css);
-
+@import url(../blocks/card/__like-block/card__like-block.css);
+@import url(../blocks/card/__like-counter/card__like-counter.css);
+@import url(../blocks/popup/__save-button/_confirm-removal/popup__save-button_confirm-removal.css);
+@import url(../blocks/profile/__overlay/profile__overlay.css);
+@import url(../blocks/profile/__edit-sign/profile__edit-sign.css);
+@import url(../blocks/card/__remove-button/_disactive/card__remove-button_disactive.css);
+/* @import url(../blocks/card/__remove-button/_disactive/card__remove-button_disactive.css); */
+/* @import url(../blocks/popup/__field/_link_avatar/popup__field_link_avatar.css); */
+/* @import url(../blocks/profile/__overlay-img/profile__overlay-img.css); */

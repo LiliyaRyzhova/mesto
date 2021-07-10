@@ -3,11 +3,11 @@
 
 
 export default class Section {
-  constructor({items, renderer}, containerSelector) {
-    this._initialArray = items;
+  constructor({renderer}, containerSelector) {
+    // this._initialArray = items;
     this._renderer = renderer;
-
     this._container = document.querySelector(containerSelector);
+
   }
 
   //метод ринимает параметр element и вставляет его в контейнер методом append
@@ -21,10 +21,13 @@ export default class Section {
   }
   //метод перебирает массив данных и вставляет в контейнер методом addItem
 
-  renderItems() {
-    this._initialArray.forEach(item => {
+  renderItems(cards) {
+
+    cards.forEach(item => {
       this._renderer(item);
+
     });
+
   }
 
 }
