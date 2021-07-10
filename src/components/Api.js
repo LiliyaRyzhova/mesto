@@ -80,8 +80,6 @@ export default class Api{
   })
     .then((res) => {
       if (res.ok) {
-        console.log(res)
-        console.log('запрос ушел, запись с картой создана')
        return res.json();
       }
       return Promise.reject(`Что-то пошло не так: ${res.status}`);
@@ -100,8 +98,6 @@ export default class Api{
     })
     .then((res) => res.json())
       .then((res) => {
-        console.log(res.likes)
-        console.log('запрос ушел');
          return res.likes;
       })}
 
@@ -119,9 +115,6 @@ export default class Api{
     })
     .then((res) => res.json())
       .then((res) => {
-
-          console.log(res.likes);
-          console.log('запрос на удаление лайка ушел');
          return res.likes;
       })
   }

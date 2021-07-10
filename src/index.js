@@ -1,6 +1,5 @@
 import '../src/pages/index.css';
 import Card from './components/Card.js';
-// import {submitPopupEditProfile} from '../scripts/utils.js';
 import {editButton, addCardButton,editForm, addForm, popupEditProfile,
         popupAddCard, showImagePopup, cardsContainer, initialCards,
         validationObj, linkField, placeField, nameProfile, professionProfile,
@@ -9,7 +8,6 @@ import {editButton, addCardButton,editForm, addForm, popupEditProfile,
          avatarProfile,formSaveButtonAddCard, changeAvatarForm} from './constants.js';
 import FormValidator from './components/FormValidator.js';
 import Section from './components/Section.js';
-// import Popup from './components/Popup.js';
 import PopupWithImage from './components/PopupWithImage.js'
 import PopupWithForm from './components/PopupWithForm.js'
 import UserInfo from './components/UserInfo.js';
@@ -32,8 +30,6 @@ function createCard(item) {
     if(isLiked) {
     api.removeLike(cardId,myId)
       .then((likesInfo) => {
-        console.log(likesInfo)
-        // card.handleLike()
         card.setLikes(likesInfo)
       })
       .catch((err) =>
@@ -41,9 +37,7 @@ function createCard(item) {
   } else {
     api.addLike(cardId, myId)
       .then((likesInfo) => {
-        console.log(likesInfo)
-        // card.handleLike()
-        card.setLikes(likesInfo)
+      card.setLikes(likesInfo)
       })
       .catch((err) =>
       console.log(err))
@@ -70,51 +64,6 @@ function createCard(item) {
     return cardElement;
 }
 
-// функция для создания новой карточки из класса Card
-
-// function createNewCard(item) {
-//   const card = new Card(item, '.card-template',myId,{
-//   handleLikeClick: (cardId,isLiked) => {
-//     if(isLiked) {
-//     api.removeLike(cardId,myId)
-//       .then((likesInfo) => {
-//         console.log(likesInfo)
-//         // card.handleLike()
-//         card.setLikes(likesInfo)
-//       })
-//       .catch((err) =>
-//       console.log(err))
-//   } else {
-//     api.addLike(cardId, myId)
-//       .then((likesInfo) => {
-//         console.log(likesInfo)
-//         // card.handleLike()
-//         card.setLikes(likesInfo)
-//       })
-//       .catch((err) =>
-//       console.log(err))
-//   }},
-//   handleCardClick: () => popupTypeOpenImage.open(item.link, item.name),
-//   handleDeleteClick: (cardId) => {
-//     popupTypeConfirm.open();
-//     // console.log(cardId)
-//     popupTypeConfirm.setSubmitAction(() => {
-//       api.cardDelete(cardId)
-//         .then(() => {
-//           console.log(item)
-//           card.removeCard();
-
-//         })
-//         .catch((err) =>
-//         console.log(err))
-//     }
-//     )}
-//   });
-//     const cardElement = card.createCard(item);
-//     return cardElement;
-
-// }
-
 //создаем карточки из массива
 
 const cardsList = new Section({
@@ -132,7 +81,6 @@ const cardsList = new Section({
 
   Promise.all([
     api.getUserData(),
-    // api.changeAvatar(),
     api.getCards()
   ])
     .then(([userData, cards]) => {
@@ -188,7 +136,6 @@ const submitEditProfPopup = new PopupWithForm(popupEditProfile, (formData) => {
       console.log(err)
     })
     formSaveButton.textContent = 'Сохранение...'
-  //  userInfo.setUserInfo(formData);
 })
 
 
@@ -202,22 +149,14 @@ editButton.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   nameEditField.value = userData.userNameInfo;
   professionEditField.value = userData.userProfessionInfo;
-  // console.log(userData.userNameInfo)
-  // console.log(userData.userNameInfo)
-  // api.editUserData
   submitEditProfPopup.open();
   formSaveButton.textContent = 'Сохранить'
 })
 editAvatarButton.addEventListener('click', () => {
-  // const userAva = userInfo.getUserPhoto();
-  // // avatarEditField.value = userAva.userPhoto;
-  // console.log(userAva.userPhoto)
   submitEditAvatar.open();
   formSaveButton.textContent = 'Сохранить'
 })
 
-// popupTypeAddCard.setEventListeners();
-// popupTypeEditProf.setEventListeners();
 
 popupTypeOpenImage.setEventListeners();
 submitAddCardPopup.setEventListeners();

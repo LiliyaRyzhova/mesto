@@ -71,28 +71,12 @@ export default class Card {
 //определяю лайкнута ли карточка пользователем, чтобы понять удалять лайк или добавлять
 _getIsLiked() {
   if (this._item.likes.some(like => like._id === this._cardUserId)) {
-    console.log('лайкнуто')
     return true
   }
   else {
-    console.log('нелайкнуто')
     return false
   }
 }
-
-
-//
-// handleLike() {
-//   this._isLiked = !this._isLiked;
-//   this._element.querySelector('.card__like-button').classList.toggle('card__like-button_active');
-
-// }
-//
-  // setLikes(likesData) {
-  //   this._isLiked = !this._isLiked;
-  //   this._element.querySelector('.card__like-button').classList.toggle('card__like-button_active');
-  //   this._element.querySelector('.card__like-counter').textContent = likesData.length;
-  // }
 
   setLikes(likesData) {
     this._item.likes = likesData;
