@@ -1,9 +1,10 @@
 
 export default class FormValidator {
-  constructor(obj, form, saveButton) {
+  constructor(obj, form) {
     this._obj = obj;
     this._form = form;
-    this._saveButton = saveButton;
+    this._saveButton = form.querySelector(this._obj.saveButtonSelector);
+    this._inputsList = Array.from(this._form.querySelectorAll(this._obj.inputSelector));
     // this._inputsList = inputsList;
   }
   _showInputError(input, errorMessage) {
@@ -11,16 +12,16 @@ export default class FormValidator {
     error.textContent = errorMessage;
     error.classList.add(this._inputInvalidClass);
   }
-  _hideInputError(form, input){
-    const error = form.querySelector(`#${input.id}-error`);
+  _hideInputError(input){
+    const error = this._form.querySelector(`#${input.id}-error`);
     error.textContent = "";
     error.classList.remove(this._inputInvalidClass);
   }
-  _checkInputValidity(form, input){
+  _checkInputValidity(input){
     if(!input.validity.valid) {
       this._showInputError(input, input.validationMessage);
     } else {
-      this._hideInputError(form, input);
+      this._hideInputError(input);
     }
   }
 
@@ -36,16 +37,24 @@ export default class FormValidator {
 
 
   _setEventListeners(){
-    const inputsList = Array.from(this._form.querySelectorAll(this._obj.inputSelector));
+    // const inputsList = Array.from(this._form.querySelectorAll(this._obj.inputSelector));
     // const saveButton = form.querySelector(this._obj.saveButtonSelector);
-    inputsList.forEach((input) => {
+    this._inputsList.forEach((input) => {
       input.addEventListener('input', () => {
-        this._checkInputValidity(this._form, input);
-        this._toggleButtonState( this._form.checkValidity());
+        this._checkInputValidity(input);
+        this._toggleButtonState(this._form.checkValidity());
       });
     });
   };
 
+  resetValidation() {
+    this._toggleButtonState();
+
+    this._inputsList.forEach((input) => {
+      this._hideInputError(input)
+    });
+
+  }
 
   enableValidation(){
     this._form.addEventListener('submit', evt => {

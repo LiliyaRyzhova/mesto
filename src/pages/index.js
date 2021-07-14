@@ -105,7 +105,6 @@ const submitAddCardPopup = new PopupWithForm(popupAddCard, (inputValues) => {
       const card = createCard(res);
       cardsList.addItemPrepend(card);
       submitAddCardPopup.close();
-      formSaveButtonAddCard.classList.add('popup__save-button_inactive')
       })
       .catch((err) => {
         console.log(err)
@@ -122,7 +121,6 @@ const submitEditAvatar = new PopupWithForm(popupEditAvatar, (inputValues) => {
       // ava.src = avatarEditField.value
       userInfo.setUserPhoto(res.avatar)
       submitEditAvatar.close();
-      formSaveButtonEditAvatar.classList.add('popup__save-button_inactive')
     })
     .catch((err) => {
       console.log(err)
@@ -151,8 +149,8 @@ const submitEditProfPopup = new PopupWithForm(popupEditProfile, (inputValues) =>
 
 addCardButton.addEventListener('click',() => {
   submitAddCardPopup.open();
-  // addFormValidator.resetValidation()});
-})
+  addFormValidator.resetValidation()});
+// })
 editButton.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   nameEditField.value = userData.userNameInfo;
@@ -162,6 +160,7 @@ editButton.addEventListener('click', () => {
 })
 editAvatarButton.addEventListener('click', () => {
   submitEditAvatar.open();
+  editAvatarFormValidator.resetValidation();
   formSaveButton.textContent = 'Сохранить'
 })
 
@@ -178,11 +177,11 @@ popupTypeConfirm.setEventListeners();
 
 // валидация
 
-const editFormValidator = new FormValidator(validationObj, editForm, formSaveButtonEditProfile);
+const editFormValidator = new FormValidator(validationObj, editForm);
 editFormValidator.enableValidation();
-const addFormValidator = new FormValidator(validationObj, addForm, formSaveButtonAddCard);
+const addFormValidator = new FormValidator(validationObj, addForm);
 addFormValidator.enableValidation();
-const editAvatarFormValidator = new FormValidator(validationObj, changeAvatarForm, formSaveButtonEditAvatar);
+const editAvatarFormValidator = new FormValidator(validationObj, changeAvatarForm);
 editAvatarFormValidator.enableValidation();
 
 
