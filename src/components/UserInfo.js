@@ -32,7 +32,7 @@ export default class UserInfo {
     }
   }
 
-  setUserPhoto({avatar}) {
+  setUserPhoto(avatar) {
     this._avatar.src = avatar
   }
 

@@ -1,18 +1,19 @@
-import '../src/pages/index.css';
-import Card from './components/Card.js';
+import '../pages/index.css';
+import Card from '../components/Card.js';
 import {editButton, addCardButton,editForm, addForm, popupEditProfile,
         popupAddCard, showImagePopup, cardsContainer, initialCards,
         validationObj, linkField, placeField, nameProfile, professionProfile,
         nameEditField, professionEditField, formSaveButton, popupConfirmRemoval,
         popupEditAvatar, editAvatarButton, popupChangeAvatarButton, avatarEditField,
-         avatarProfile,formSaveButtonAddCard, changeAvatarForm} from './constants.js';
-import FormValidator from './components/FormValidator.js';
-import Section from './components/Section.js';
-import PopupWithImage from './components/PopupWithImage.js'
-import PopupWithForm from './components/PopupWithForm.js'
-import UserInfo from './components/UserInfo.js';
-import Api from './components/Api.js';
-import PopupConfirm from './components/PopupConfirm.js';
+         avatarProfile,formSaveButtonAddCard, changeAvatarForm, formSaveButtonEditProfile,
+         formSaveButtonEditAvatar, formSaveButtonInactive, inputs} from '../constants.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
+import PopupConfirm from '../components/PopupConfirm.js';
 let myId;
 
 
@@ -30,14 +31,14 @@ function createCard(item) {
     if(isLiked) {
     api.removeLike(cardId,myId)
       .then((likesInfo) => {
-        card.setLikes(likesInfo)
+        card.setLikes(likesInfo.likes)
       })
       .catch((err) =>
       console.log(err))
   } else {
     api.addLike(cardId, myId)
       .then((likesInfo) => {
-      card.setLikes(likesInfo)
+      card.setLikes(likesInfo.likes)
       })
       .catch((err) =>
       console.log(err))
@@ -51,7 +52,7 @@ function createCard(item) {
         .then(() => {
           // console.log(item)
           card.removeCard();
-
+          popupTypeConfirm.close();
         })
         .catch((err) =>
         console.log(err))
@@ -85,7 +86,7 @@ const cardsList = new Section({
   ])
     .then(([userData, cards]) => {
       userInfo.setUserInfo(userData);
-      userInfo.setUserPhoto(userData);
+      userInfo.setUserPhoto(userData.avatar);
       myId = userData._id;
       console.log(myId),
       cardsList.renderItems(cards);
@@ -98,53 +99,60 @@ const cardsList = new Section({
 // обработка попапов
 
 const popupTypeOpenImage = new PopupWithImage(showImagePopup);
-const submitAddCardPopup = new PopupWithForm(popupAddCard, () => {
-      api.addNewCard()
+const submitAddCardPopup = new PopupWithForm(popupAddCard, (inputValues) => {
+      api.addNewCard(inputValues)
       .then((res) => {
       const card = createCard(res);
       cardsList.addItemPrepend(card);
-      formSaveButtonAddCard.textContent = 'Создать'
+      submitAddCardPopup.close();
+      formSaveButtonAddCard.classList.add('popup__save-button_inactive')
       })
       .catch((err) => {
         console.log(err)
-        formSaveButtonAddCard.textContent = 'Создать'
       })
-      formSaveButtonAddCard.textContent = 'Сохранение...'
+      .finally(() => formSaveButtonAddCard.textContent = 'Создать')
+      formSaveButtonAddCard.textContent = 'Сохранение...';
 });
 const popupTypeConfirm = new PopupConfirm(popupConfirmRemoval);
 
-const submitEditAvatar = new PopupWithForm(popupEditAvatar, () => {
-  api.changeAvatar()
+const submitEditAvatar = new PopupWithForm(popupEditAvatar, (inputValues) => {
+  api.changeAvatar(inputValues)
     .then((res) => {
-      const ava = document.querySelector('.profile__avatar')
-      ava.src = avatarEditField.value
+      // const ava = document.querySelector('.profile__avatar')
+      // ava.src = avatarEditField.value
+      userInfo.setUserPhoto(res.avatar)
+      submitEditAvatar.close();
+      formSaveButtonEditAvatar.classList.add('popup__save-button_inactive')
     })
     .catch((err) => {
       console.log(err)
     })
-    formSaveButton.textContent = 'Сохранение...'
+    .finally(() => formSaveButtonEditAvatar.textContent = 'Сохранить')
+    formSaveButtonEditAvatar.textContent = 'Сохранение...'
 })
 
 
 const userInfo = new UserInfo(nameProfile, professionProfile, avatarProfile);
-const submitEditProfPopup = new PopupWithForm(popupEditProfile, (formData) => {
-  api.editUserData() //отправляем новые данные на сервер
+const submitEditProfPopup = new PopupWithForm(popupEditProfile, (inputValues) => {
+  api.editUserData(inputValues) //отправляем новые данные на сервер
     .then((res) => {
-      userInfo.setUserInfo(formData) //если данные ушли на сервер, обновляем их на странице
+      userInfo.setUserInfo(inputValues) //если данные ушли на сервер, обновляем их на странице
+      submitEditProfPopup.close();
     })
     .catch((err) => {
       console.log(err)
     })
-    formSaveButton.textContent = 'Сохранение...'
+    .finally(() => formSaveButtonEditProfile.textContent = 'Сохранить')
+    formSaveButtonEditProfile.textContent = 'Сохранение...'
 })
 
 
 
 
 addCardButton.addEventListener('click',() => {
-  placeField.value = '';
-  linkField.value = ' ';
-  submitAddCardPopup.open();});
+  submitAddCardPopup.open();
+  // addFormValidator.resetValidation()});
+})
 editButton.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   nameEditField.value = userData.userNameInfo;
@@ -170,11 +178,11 @@ popupTypeConfirm.setEventListeners();
 
 // валидация
 
-const editFormValidator = new FormValidator(validationObj, editForm);
+const editFormValidator = new FormValidator(validationObj, editForm, formSaveButtonEditProfile);
 editFormValidator.enableValidation();
-const addFormValidator = new FormValidator(validationObj, addForm);
+const addFormValidator = new FormValidator(validationObj, addForm, formSaveButtonAddCard);
 addFormValidator.enableValidation();
-const editAvatarFormValidator = new FormValidator(validationObj, changeAvatarForm);
+const editAvatarFormValidator = new FormValidator(validationObj, changeAvatarForm, formSaveButtonEditAvatar);
 editAvatarFormValidator.enableValidation();
 
 

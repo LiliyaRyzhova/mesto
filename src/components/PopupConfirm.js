@@ -1,9 +1,9 @@
 import Popup from '../components/Popup.js';
 
 export default class PopupConfirm extends Popup {
-  constructor(popupSelector){  //принимает селектор попапа
-  super(popupSelector);
-  this._form = this._popupSelector.querySelector('.popup__form_confirm-removal');
+  constructor(popup){  //принимает селектор попапа
+  super(popup);
+  this._form = this._popup.querySelector('.popup__form_confirm-removal');
 }
 
 
@@ -17,6 +17,5 @@ setEventListeners() {
   this._form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     this._handleSubmitCallback();
-    this.close()
   });
 }}

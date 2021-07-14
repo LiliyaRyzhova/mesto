@@ -78,15 +78,15 @@ _getIsLiked() {
   }
 }
 
-  setLikes(likesData) {
-    this._item.likes = likesData;
+  setLikes(likesInfo) {
+    this._item.likes = likesInfo;
     if (this._getIsLiked()) {
       this._element.querySelector('.card__like-button').classList.add('card__like-button_active');
     }
     else {
       this._element.querySelector('.card__like-button').classList.remove('card__like-button_active');
     }
-    this._element.querySelector('.card__like-counter').textContent = likesData.length;
+    this._element.querySelector('.card__like-counter').textContent = likesInfo.length;
   }
 
 

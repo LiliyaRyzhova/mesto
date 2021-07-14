@@ -1,6 +1,3 @@
-import {nameEditField, professionEditField, avatarEditField,placeField,linkField} from './../../src/constants.js';
-
-
 
 export default class Api{
   constructor(baseUrl, token){
@@ -8,6 +5,12 @@ export default class Api{
     this._token = token;
   }
   // /получаем карточки с сервера
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+  }
+  return Promise.reject(`Ошибка ${res.status}`);
+  }
 
   getCards() {
     return fetch(`${this._baseUrl}/cards`, {
@@ -16,14 +19,7 @@ export default class Api{
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      if (res.ok) {
-       return res.json();
-
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
-
+    .then(this._checkResponse)
   }
 
   //получаем инфо о пользователе с сервера
@@ -35,15 +31,10 @@ export default class Api{
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      if (res.ok) {
-       return res.json();
-
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
+    .then(this._checkResponse)
   }
-  editUserData() {
+
+  editUserData(inputValues) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: {
@@ -51,22 +42,17 @@ export default class Api{
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: nameEditField.value,
-        about: professionEditField.value,
+        name: inputValues.name,
+        about: inputValues.about,
 
     })
   })
-    .then((res) => {
-      if (res.ok) {
-       return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
+    .then(this._checkResponse)
   }
 
   // создание новой карточки
 
-  addNewCard() {
+  addNewCard(inputValues) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: {
@@ -74,16 +60,12 @@ export default class Api{
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: placeField.value,
-        link: linkField.value
+        name: inputValues.name,
+        link: inputValues.link
     })
   })
-    .then((res) => {
-      if (res.ok) {
-       return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-  })}
+  .then(this._checkResponse)
+}
 
   addLike(cardId,userId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
@@ -96,10 +78,8 @@ export default class Api{
           userId: userId ,
        })
     })
-    .then((res) => res.json())
-      .then((res) => {
-         return res.likes;
-      })}
+    .then(this._checkResponse)
+    }
 
 
   removeLike(cardId,userId) {
@@ -113,10 +93,7 @@ export default class Api{
           userId: userId ,
        })
     })
-    .then((res) => res.json())
-      .then((res) => {
-         return res.likes;
-      })
+    .then(this._checkResponse)
   }
 
   cardDelete(cardId) {
@@ -128,17 +105,12 @@ export default class Api{
       }
 
     })
-      .then((res) => {
-        if (res.ok) {
-         return res.json();
-        }
-        return Promise.reject(`Что-то пошло не так: ${res.status}`);
-      })
+    .then(this._checkResponse)
   }
 
   //запрос на обновление аватара
 
-  changeAvatar() {
+  changeAvatar(inputValues) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
@@ -147,14 +119,9 @@ export default class Api{
 
     },
       body: JSON.stringify({
-        avatar: avatarEditField.value
+        avatar: inputValues.avatar
         })
       })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
-  }
+      .then(this._checkResponse)
+    }
 }

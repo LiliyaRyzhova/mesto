@@ -22,6 +22,9 @@ const popupShowImageCaption = document.querySelector('.popup__image-caption');
 const cardImage = document.querySelector('.popup__image');
 const escKey = 'Escape';
 const formSaveButton = document.querySelector('.popup__save-button');
+const formSaveButtonEditProfile = document.querySelector('.popup__save-button_edit-profile');
+// const formSaveButtonConfirmRemoval = document.querySelector('.popup__save-button_confirm-removal');
+const formSaveButtonEditAvatar = document.querySelector('.popup__save-button_change-avatar');
 const formSaveButtonInactive = document.querySelector('.popup__save-button_inactive')
 const formSaveButtonAddCard =document.querySelector('.popup__save-button_add-card');
 const cardRemoveButton = document.querySelector('.card__remove-button');
@@ -29,6 +32,7 @@ const popupConfirmRemoval = document.querySelector('.popup_confirm-removal');
 const editAvatarButton = document.querySelector('.profile__edit-sign');
 const avatarEditField = document.querySelector('.popup__field_avatar_link');
 const avatarProfile = document.querySelector('.profile__avatar');
+const inputs = document.querySelector('.popup__field')
 
 const validationObj = {
   formSelector: '.popup__form-fields',
@@ -70,6 +74,6 @@ export {editForm, addForm, editButton, popupCloseButtonEditPopup, popupCloseButt
         cardsContainer, addCardButton, popupEditProfile, popupAddCard, placeField, linkField, cardImage,
         showImagePopup, popupShowImageCaption, validationObj, escKey, formSaveButton, formSaveButtonInactive,
         initialCards, popupConfirmRemoval, popupEditAvatar, editAvatarButton, avatarEditField, popupChangeAvatarButton
-        ,avatarProfile, cardRemoveButton,formSaveButtonAddCard,changeAvatarForm};
+        ,avatarProfile, cardRemoveButton,formSaveButtonAddCard,changeAvatarForm, inputs, formSaveButtonEditProfile, formSaveButtonEditAvatar };
 
 
